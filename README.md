@@ -46,6 +46,21 @@ A Custom GPT with these files as Knowledge also works and saves re-attaching, bu
 reports of code interpreter failing for non-creator accounts once knowledge files are added. If you
 hit that, attach the zip in a normal chat instead.
 
+### DeepSeek Harness
+
+Unzip it into the shared agents root:
+
+```bash
+unzip pocket-tactic-board-drills.zip -d ~/.agents/skills/
+```
+
+The harness scans `~/.agents/skills` for directory bundles, so it is picked up without a restart —
+its watcher notices the new folder. `~/.dsh/skills` works too, and `.agents/skills` or `.dsh/skills`
+inside a project limits it to that repo.
+
+Note that `~/.agents/skills` is a shared root rather than a DeepSeek-specific one, so a skill unzipped
+there can serve more than one tool.
+
 ### Anything else
 
 The requirements are only: read a folder, run a Python script, show an image. Point your assistant at

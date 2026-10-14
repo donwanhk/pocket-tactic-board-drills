@@ -57,6 +57,26 @@ All 43 accepted names:
 
 `attacking-box` · `attacking-corner-left` · `attacking-corner-right` · `attacking-goal` · `attacking-goal-line` · `attacking-penalty-spot` · `attacking-six` · `attacking-third` · `attacking-top-of-d` · `centre-attacking-third` · `centre-circle` · `centre-defensive-third` · `centre-middle-third` · `centre-spot` · `defensive-third` · `halfway-left` · `halfway-line` · `halfway-right` · `left-attacking-third` · `left-centre-attacking-third` · `left-centre-defensive-third` · `left-centre-middle-third` · `left-defensive-third` · `left-middle-third` · `left-touchline` · `left-wing` · `middle-third` · `own-box` · `own-corner-left` · `own-corner-right` · `own-goal` · `own-goal-line` · `own-penalty-spot` · `own-six` · `right-attacking-third` · `right-centre-attacking-third` · `right-centre-defensive-third` · `right-centre-middle-third` · `right-defensive-third` · `right-middle-third` · `right-touchline` · `right-wing` · `top-of-d`
 
+## Shirt numbers are not what the board shows
+
+A player is written as a team and a number, but the board draws the away team from
+21 up: **an away player's disc reads its number plus 20.**
+
+| written | drawn on the board |
+|---|---|
+| `{ "team": "home", "number": 9 }` | 9 |
+| `{ "team": "away", "number": 4 }` | 24 |
+| `{ "team": "away", "number": 1 }` | 21 (the keeper) |
+
+**Narration and captions must use the drawn number**, because that is the only one the viewer can
+see. Saying "four closes him down" over a disc reading 24 is simply wrong on
+screen.
+
+The same split catches the ball. `carriedBy` and `passTo` take the **written** number, and
+`team` defaults to home - so `{ "carriedBy": 4 }` means home 4, never away 4. Give the ball to an
+away player with `{ "carriedBy": 4, "team": "away" }`. A ball handed to a player who is not on the
+pitch is rejected rather than quietly left where it was.
+
 ## Other vocabulary
 
 | | |

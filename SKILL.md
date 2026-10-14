@@ -39,6 +39,10 @@ Phase 3 of 6 - execution
 
 Give every phase, then the total length and the phase count.
 
+**Name every player by the number the board draws**, which for the away team is not the number you
+wrote — see FORMAT.md. Writing the listing is where that gets caught: if the movement line says 24
+and the narration says "four", one of them is wrong, and it is almost always the narration.
+
 **Movement describes the change into the next phase**, because that is what the narration on that
 phase is spoken over. Writing it out this way is also the best check on the thing most easily got
 backwards: if a phase's movement and its narration describe different moments, the drill is wrong and
@@ -77,6 +81,14 @@ backwards, and when it is backwards every line describes something the viewer ha
 them looks broken, and any coaching point about committing a defender or beating a press is hollow
 without one that reacts. Give them a recovery run, a step across, a drop. It is the difference
 between a diagram and a drill.
+
+**Away numbers are not what they look like.** An away player written as 4 is drawn as 24, so
+narration that says "four" is describing a disc nobody can see. The ball is the same trap from the
+other side: `carriedBy` defaults to the home team, so `{ "carriedBy": 4 }` gives the ball to home 4
+even when the only 4 you placed was an away one. Say `{ "carriedBy": 4, "team": "away" }`. The app
+rejects a ball given to a player who is not on the pitch, so the common version of this mistake comes
+back as an error rather than a drill that quietly contradicts itself — but the version where both
+teams have that number does not, and only reading the listing will catch it.
 
 **Do not put a player on a net.** Nets draw underneath players, so a keeper placed on
 `attacking-goal` makes the goal vanish. Offset one of them.

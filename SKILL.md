@@ -9,6 +9,9 @@ The app is a tactic board that animates a drill and exports it as a narrated vid
 phone; nothing here can drive it. The job is to write a drill the app will accept, render it as a QR
 code, and let the person scan it with the app's own scanner.
 
+If they do not have the app yet, it is at **https://pocket-tactic-board.vercel.app/** — say so before
+handing them a code they have no way to read.
+
 **Read [FORMAT.md](FORMAT.md) before writing anything.** It is generated from the app's validator, so
 it is the authority on limits, place names and vocabulary. Do not rely on what is remembered here.
 
@@ -17,7 +20,31 @@ it is the authority on limits, place names and vocabulary. Do not rely on what i
 1. Write the drill as JSON. Work from [examples/](examples/) — they are real drills, validated.
 2. `python3 scripts/make_qr.py drill.json -o drill-code.png`
 3. Show the person the PNG and tell them: **Menu → Scan a Drill Code**, then point the phone at it.
-4. They look at the board and say what is wrong. Change the JSON and make a new code.
+4. **Write out what is on the code**, phase by phase — see below.
+5. They look at the board and say what is wrong. Change the JSON and make a new code.
+
+## Always list the phases with the code
+
+A QR code is unreadable to a person. Handing one over on its own asks them to scan, watch a
+forty-second animation, and only then discover the narration is wrong. So print the contents
+alongside it, read from the JSON you just wrote rather than from memory:
+
+```
+Phase 3 of 6 - execution
+  Subtitle:  Past him, but not clear
+  Narration: "Nine is past him on the left. The defender turns and runs - he is not finished yet."
+  Movement:  9 carries the ball from the centre out to the left; 4 turns to chase; the keeper
+             shifts across to cover the near post.
+```
+
+Give every phase, then the total length and the phase count.
+
+**Movement describes the change into the next phase**, because that is what the narration on that
+phase is spoken over. Writing it out this way is also the best check on the thing most easily got
+backwards: if a phase's movement and its narration describe different moments, the drill is wrong and
+this is where it shows.
+
+The last phase has no movement after it; say so rather than inventing one.
 
 Revising means a new code and another scan. That is the cost of needing no setup, and scanning takes
 about two seconds, so do not hesitate to iterate — a drill is usually wrong the first time.

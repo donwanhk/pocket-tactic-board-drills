@@ -7,6 +7,8 @@ animate and export as a narrated video.
 **[⬇ Download the latest release](https://github.com/donwanhk/pocket-tactic-board-drills/releases/latest)**
 — `pocket-tactic-board-drills.zip`
 
+You will also need the app itself: **<https://pocket-tactic-board.vercel.app/>**
+
 Python 3 is the only requirement. There is nothing to install: the QR encoder ships inside.
 
 ---

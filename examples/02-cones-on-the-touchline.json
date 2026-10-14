@@ -1,0 +1,13 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Three cones, five metres apart",
+  "field": "11-a-side",
+  "phases": [
+    {
+      "cones": [
+        { "at": "left-touchline", "count": 3, "spacing_m": 5, "direction": "up", "color": "orange" }
+      ],
+      "ball": { "at": "centre-spot" }
+    }
+  ]
+}

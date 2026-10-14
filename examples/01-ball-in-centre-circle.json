@@ -1,0 +1,8 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Ball in the centre circle",
+  "field": "11-a-side",
+  "phases": [
+    { "ball": { "at": "centre-spot" } }
+  ]
+}

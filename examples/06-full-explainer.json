@@ -1,0 +1,51 @@
+{
+  "format": "ptb.drill/1",
+  "title": "2v1 overload to finish",
+  "field": "7-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Set up: 2v1 in the attacking third",
+      "say": "Set up a two versus one in the attacking third. Two attackers, one defender, and the rest waiting their turn.",
+      "players": [
+        { "team": "home", "number": 9,  "at": "centre-middle-third" },
+        { "team": "home", "number": 11, "at": "left-middle-third" },
+        { "team": "away", "number": 4,  "at": "attacking-top-of-d" },
+        { "team": "home", "number": 2,  "at": "halfway-right", "count": 5, "spacing_m": 8, "direction": "down" },
+        { "team": "away", "number": 12, "at": "own-corner-left", "count": 4, "spacing_m": 8, "direction": "right" }
+      ],
+      "cones": [{ "at": "left-touchline", "count": 2, "spacing_m": 20, "direction": "up", "color": "orange" }],
+      "nets": [{ "at": "attacking-goal", "facing": 180 }],
+      "ball": { "carriedBy": 9 }
+    },
+    {
+      "role": "instruction",
+      "caption": "Nine on the ball, eleven overlaps",
+      "say": "Nine starts on the ball. Eleven runs wide and beyond. The defender must delay, not dive in."
+    },
+    {
+      "role": "execution",
+      "caption": "Carry at the defender",
+      "say": "Nine carries straight at the defender to commit him.",
+      "players": [{ "team": "home", "number": 9, "at": [0.5, 0.34] }],
+      "ball": { "carriedBy": 9 }
+    },
+    {
+      "role": "execution",
+      "caption": "Release and finish",
+      "say": "As the defender commits, nine releases eleven on the overlap to finish.",
+      "players": [{ "team": "home", "number": 11, "at": "attacking-penalty-spot" }],
+      "ball": { "passTo": 11 }
+    },
+    {
+      "role": "explanation",
+      "caption": "Why it works",
+      "say": "The defender cannot cover both attackers. Committing him is what creates the free man."
+    },
+    {
+      "role": "coaching",
+      "caption": "Coaching points",
+      "say": "Coaching points. Attack the defender, do not drift sideways. Pass late, and finish first time."
+    }
+  ]
+}

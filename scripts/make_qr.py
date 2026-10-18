@@ -5,12 +5,14 @@ Usage:
     python3 make_qr.py drill.json [-o drill.png] [--text-only]
     cat drill.json | python3 make_qr.py - -o drill.png
 
-What this does NOT do is validate the drill. That is deliberate. The real validator is 400-odd lines
-inside the app and it is what judges the drill on arrival; a second copy here would drift from it, and
-a drill that passed this script and failed the phone would be worse than no check at all. So this
-checks only what it needs in order to encode anything meaningful - that the input is a JSON object
-with phases - plus the one limit the app cannot help with, which is how much a QR code physically
-holds.
+The drill is checked first, by `drill_check.py`, which refuses what the app would refuse. That used
+to be left to the phone on the grounds that a second copy of the rules would drift from the
+validator - which was right about the danger and wrong about the only cure. The checker carries no
+copy: it reads `rules.json`, generated from the validator itself. What it cannot decide from that it
+reports as advice, or leaves to the phone, which remains the authority.
+
+`--no-check` skips it. The one limit nothing else can help with is still enforced here: how much a
+QR code physically holds.
 
 The payload format must match utils/drillLink.ts exactly:
     PTB1: + base64url( raw DEFLATE( json ) )
@@ -29,7 +31,12 @@ import zlib
 # no network at all - ChatGPT's code interpreter is one - so `pip install` is not a step that can be
 # relied on, and an install step is the thing most likely to stop someone using this at all. Putting
 # the vendored copy first also means every agent runs the same encoder.
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, 'vendor'))
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(HERE, os.pardir, 'vendor'))
+# And this script's own folder, so drill_check is importable however make_qr was invoked
+sys.path.insert(0, HERE)
+
+import drill_check
 
 PREFIX = "PTB1:"
 # Capacity of the largest QR version in byte mode at error correction L. Past this there is no
@@ -79,6 +86,11 @@ def main() -> int:
         action="store_true",
         help="print the code and skip the image, for pasting into the app instead",
     )
+    parser.add_argument(
+        "--no-check",
+        action="store_true",
+        help="encode without checking the drill first, leaving every mistake to the phone",
+    )
     args = parser.parse_args()
 
     text = sys.stdin.read() if args.drill == "-" else open(args.drill, encoding="utf-8").read()
@@ -90,6 +102,19 @@ def main() -> int:
     if not isinstance(script, dict) or not isinstance(script.get("phases"), list):
         print("A drill is a JSON object with a `phases` array.", file=sys.stderr)
         return 1
+
+    if not args.no_check:
+        report = drill_check.check(script, drill_check.load_rules())
+        if report.errors:
+            # No code is written. Handing over one the app will refuse wastes a scan and the trust
+            # that goes with it.
+            print(drill_check.format_report(report), file=sys.stderr)
+            print("\nNo code written. Fix the drill, or pass --no-check to encode it anyway.",
+                  file=sys.stderr)
+            return 1
+        if report.warnings:
+            print(drill_check.format_report(report))
+            print()
 
     code = encode(script)
     if len(code) > QR_BYTE_CEILING:

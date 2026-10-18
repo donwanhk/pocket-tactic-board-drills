@@ -22,19 +22,35 @@ Every drill needs `format`, `title`, `field` and at least one phase.
 | `caption` | up to 120 characters |
 | `say` | up to 400 characters |
 | `count` on a player or cone row | up to 12 |
+| how far one player may move between two phases | 18m |
 
 ## Phases
 
-Each phase is a complete picture of the board, not a change to the one before. Write out every player
-in every phase; anyone left out has left the pitch.
+Each phase lists only what changes. Players, cones, nets and the ball carry forward, so a player
+written once stays exactly where he is until a later phase moves him. Repeating an unchanged player
+is harmless, but it makes the code longer for no gain.
+
+Two consequences worth knowing before writing:
+
+- **Nothing can be taken off the board.** There is no way to remove a player, a cone or a net once a
+  phase has placed it. Someone who should leave has to be walked to the touchline instead.
+- **A cone or a net needs an `id` to be moved.** Without one, every phase's cones and nets are new
+  objects, so declaring a cone in two phases leaves two cones on the pitch. Give both phases the same
+  `id` and it is one cone that moves.
+
+Drawings are the exception to all of this: `arrows`, `areas` and `circles` belong to the phase that
+declares them and are gone on the next one.
 
 A phase may carry `role` (`setup`, `instruction`, `execution`, `explanation`, `coaching`), `say` (the narration), `caption` and `at`
 (`top`, `middle`, `bottom`) for the caption's place on screen, plus `players`, `cones`,
-`nets`, `ball` and `arrows`.
+`nets`, `ball`, `arrows`, `areas` and `circles`.
 
-**A phase's `say` describes the movement that happens as the board changes *into* the next phase.**
-That is the one thing most easily got backwards, and getting it backwards makes the narration
-describe what the viewer has already watched.
+**A phase's `say` is spoken while the board moves into that phase**, so the words and the movement
+they describe play together. The first phase is the exception: nothing moves into it, so its words
+are read over a still board.
+
+That is the one thing most easily got backwards, and getting it backwards puts every line a phase
+early - describing something the viewer has not reached yet.
 
 ## Places
 
@@ -77,11 +93,16 @@ The same split catches the ball. `carriedBy` and `passTo` take the **written** n
 away player with `{ "carriedBy": 4, "team": "away" }`. A ball handed to a player who is not on the
 pitch is rejected rather than quietly left where it was.
 
+**Which side of his feet the ball sits on is worked out for you.** A ball just received sits on the
+side it came from; one about to be played sits toward whoever gets it next; one being carried sits
+ahead of the run. Nothing to write - it follows from the phases either side.
+
 ## Other vocabulary
 
 | | |
 |---|---|
 | cone colours | `orange`, `yellow`, `blue`, `green`, `red` |
+| cone `stand` | `inside`, `outside` |
 | directions for a row | `up`, `down`, `left`, `right` |
 | net `facing` | `0`, `45`, `90`, `135`, `180`, `225`, `270`, `315` |
 
@@ -98,25 +119,64 @@ covers roughly this much grass:
 | `futsal` | player 2.6m, net 2.6m, cone 1.8m |
 
 Ask for a queue three metres apart on a full pitch and the positions are exact while the discs sit
-on top of each other. The answer is to zoom in, not to space things further apart than they are in
-real life. Advisory - nothing enforces it.
+on top of each other.
+
+**The board zooms in for you.** A drill using one corner of the pitch is framed to fill the screen,
+once for the whole drill so the view never moves while it plays, and never tighter than the drill
+itself. So write the real distances: three metres is three metres, and the zoom is what makes them
+readable. Spacing players further apart than they stand in life is the one thing that cannot be
+undone afterwards.
+
+**A player placed on a cone is moved just clear of it**, because a player disc is wider than a cone
+and would hide it completely - and nobody stands on a cone anyway. The cone stays exactly where it
+was put; the player steps aside by the width of the two markers. Place a player at a cone and the
+drill will look right, so there is no need to offset it by hand.
+
+He steps **into the shape the cones make** - the middle of the triangle, grid or gate they describe -
+so the cones stay outside marking it out while the players work within. That is what a station wants.
+For a cone the drill goes *round* rather than stands at, say so on the cone and he steps the other
+way:
+
+```json
+{ "id": "slalom", "at": "centre-middle-third", "count": 4, "spacing_m": 8, "stand": "outside" }
+```
+
+A player placed merely *near* a cone keeps the side he was given, since that is the drill already
+saying which one it wants. `stand` overrides that too.
 
 Two things worth avoiding because they read as mistakes: putting a player on the same spot as a net
 (the net draws underneath and disappears), and leaving defenders standing still while attackers move,
 which makes any coaching point about them hollow.
 
+## How far anyone can move in one phase
+
+**Movement between two phases always takes 2 seconds**, however long the
+narration on it runs. A long sentence stretches the phase on screen - the players arrive, then stand
+still until the voice catches up - so a longer line buys reading time and never distance.
+
+That makes the distance between two positions a speed, and it is checked: more than
+**18 metres** for one player is rejected, because 18 metres in
+2 seconds is already a sprinter at full speed from a standing start.
+
+Aim well under it. About **12 metres** is a convincing run, and on a full pitch that is roughly an
+eighth of its length - so moving someone from one third of the pitch to another is two or three
+phases, not one. Distances are measured on the pitch the app draws, which is 105 by 68 metres for
+every football field size and 40 by 20 for futsal.
+
 ## Worked examples
 
 In `examples/`, every one validated when this file was generated.
 
-| file | phases | code length |
-|---|---|---|
-| `01-ball-in-centre-circle.json` | 1 | 141 |
-| `02-cones-on-the-touchline.json` | 1 | 220 |
-| `03-2v1-with-twelve-players.json` | 1 | 351 |
-| `04-caption-and-narration.json` | 1 | 383 |
-| `05-carry-then-release.json` | 3 | 521 |
-| `06-full-explainer.json` | 6 | 932 |
+| file | what it shows | phases | code length |
+|---|---|---|---|
+| `01-switch-the-play.json` | Switch the play to the free winger | 6 | 1188 |
+| `02-slalom-dribble.json` | Slalom dribble through the gate | 6 | 1155 |
+| `03-pass-and-follow.json` | Pass and follow, three stations | 5 | 1148 |
+| `04-two-small-goals.json` | Three against three, two small goals | 5 | 1272 |
+| `05-draw-the-overlap.json` | Draw the overlap, then run it | 5 | 1175 |
+| `06-win-it-back.json` | Win it back and go | 5 | 1104 |
+| `07-cross-and-finish.json` | Cross and finish, by role | 5 | 1059 |
+| `08-spring-the-trap.json` | Spring the trap on the full back | 6 | 1439 |
 
 A QR code holds about 2953 characters, so there is room for far more than these use.
 `make_qr.py` refuses anything that will not fit rather than truncating it.

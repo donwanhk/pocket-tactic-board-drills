@@ -74,8 +74,8 @@ The requirements are only: read a folder, run a Python script, show an image. Po
 
 > *"A 1v1 to goal for futsal, with a defender who recovers."*
 
-The assistant writes the drill, runs `scripts/make_qr.py`, and shows you a QR code. In the app:
-**☰ → Scan a Drill Code**, point the camera at it, then **Load drill**.
+The assistant writes the drill, checks it, runs `scripts/make_qr.py`, and shows you a QR code. In
+the app: **☰ → Scan a Drill Code**, point the camera at it, then **Load drill**.
 
 Each revision is a new code. Say what is wrong, scan again — it takes a couple of seconds.
 
@@ -86,13 +86,17 @@ Each revision is a new code. Say what is wrong, scan again — it takes a couple
 ```
 SKILL.md        what the assistant reads first
 FORMAT.md       the drill format, generated from the app's own validator
-examples/       six worked drills, all validated
-scripts/        make_qr.py - drill JSON to a scannable code
+rules.json      the same limits and place names, for the scripts rather than the reader
+examples/       eight worked drills, all validated
+scripts/        make_qr.py       - drill JSON to a scannable code
+                drill_check.py   - refuses what the app would refuse, before a code is made
+                drill_preview.py - draws each phase as a grid, to look at before anyone scans it
 vendor/segno/   the QR encoder, vendored so there is no install step
 ```
 
-`FORMAT.md` is generated rather than written by hand, so it cannot drift from the validator that
-judges the drills.
+`FORMAT.md` and `rules.json` are generated rather than written by hand, so neither can drift from the
+validator that judges the drills — and the checker works from the generated file rather than from a
+copy of the rules, which is what lets it refuse a drill without ever disagreeing with the app.
 
 The encoder is [segno](https://github.com/heuer/segno) by Lars Heuer, BSD-3-Clause — see
 `vendor/segno/LICENSE`. It is vendored because some sandboxes have no network, so `pip install`

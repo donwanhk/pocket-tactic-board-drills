@@ -1,0 +1,136 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Slalom dribble through the gate",
+  "field": "7-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Close control at speed",
+      "say": "Close control at speed. The aim is to keep the ball inside the feet while changing direction, and to lift the head between touches. Four orange cones eight metres apart, a yellow gate at the top, and the queue behind the first cone. Every player brings their own ball and goes on the whistle.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.5,
+            0.58
+          ]
+        },
+        {
+          "team": "home",
+          "number": 8,
+          "at": [
+            0.58,
+            0.66
+          ],
+          "count": 4,
+          "spacing_m": 8,
+          "direction": "down"
+        }
+      ],
+      "cones": [
+        {
+          "id": "slalom",
+          "at": "centre-middle-third",
+          "count": 4,
+          "spacing_m": 8,
+          "direction": "up",
+          "color": "orange",
+          "stand": "outside"
+        },
+        {
+          "id": "gate",
+          "at": [
+            0.44,
+            0.24
+          ],
+          "count": 2,
+          "spacing_m": 8,
+          "direction": "right",
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Outside foot, round the first",
+      "say": "Seven, take it round the first cone with the outside of the foot. Small touches — the cone should never be more than a stride away.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.42,
+            0.47
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Cut back across",
+      "say": "Now cut it back across your body for the second. Head up as you come out of the turn — that is the touch everyone forgets.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.58,
+            0.39
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Third cone, then go",
+      "say": "Round the third and accelerate. Once you are past the last cone it is not a dribble any more, it is a run with the ball.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.42,
+            0.31
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Through the yellow gate",
+      "say": "Through the yellow gate under control, stop the ball dead, and jog back down the side to rejoin the queue.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.49,
+            0.17
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Touch every stride\n- Outside foot going away\n- Head up between touches",
+      "say": "Coaching points. A touch every stride, outside foot when you are going away from the cone, and get your head up between touches."
+    }
+  ]
+}

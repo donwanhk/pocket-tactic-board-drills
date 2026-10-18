@@ -1,0 +1,258 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Three against three, two small goals",
+  "field": "9-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Three v three to small goals",
+      "say": "Three against three to two small goals. The aim is to turn and attack the moment the ball is won, because the goal behind you is only twenty metres away. A grid thirty by twenty-five metres, a small goal on each end line, no keepers, and we start with the ball.",
+      "players": [
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.45,
+            0.52
+          ]
+        },
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.38,
+            0.42
+          ]
+        },
+        {
+          "team": "home",
+          "number": 11,
+          "at": [
+            0.55,
+            0.58
+          ]
+        },
+        {
+          "team": "away",
+          "number": 4,
+          "at": [
+            0.55,
+            0.44
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.64,
+            0.55
+          ]
+        },
+        {
+          "team": "away",
+          "number": 6,
+          "at": [
+            0.35,
+            0.57
+          ]
+        }
+      ],
+      "nets": [
+        {
+          "id": "red-goal",
+          "at": [
+            0.28,
+            0.5
+          ],
+          "facing": 90
+        },
+        {
+          "id": "blue-goal",
+          "at": [
+            0.72,
+            0.5
+          ],
+          "facing": 270
+        }
+      ],
+      "areas": [
+        {
+          "at": "centre-spot",
+          "width_m": 30,
+          "height_m": 25,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "carriedBy": 9
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Nine turns out of trouble",
+      "say": "Nine takes it away from twenty-four and opens his body up. Both of theirs come towards the ball and twenty-six starts the long way back, which is the moment eleven is waiting for.",
+      "players": [
+        {
+          "team": "away",
+          "number": 4,
+          "at": [
+            0.51,
+            0.47
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.59,
+            0.53
+          ]
+        },
+        {
+          "team": "away",
+          "number": 6,
+          "at": [
+            0.44,
+            0.6
+          ]
+        },
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.45,
+            0.4
+          ]
+        }
+      ],
+      "areas": [
+        {
+          "at": "centre-spot",
+          "width_m": 30,
+          "height_m": 25,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "carriedBy": 9
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Released behind them",
+      "say": "He slides it behind the two of them for eleven, who is already running at the goal with nobody between him and it.",
+      "players": [
+        {
+          "team": "home",
+          "number": 11,
+          "at": [
+            0.64,
+            0.54
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.6,
+            0.47
+          ]
+        },
+        {
+          "team": "away",
+          "number": 6,
+          "at": [
+            0.53,
+            0.58
+          ]
+        },
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.52,
+            0.42
+          ]
+        }
+      ],
+      "areas": [
+        {
+          "at": "centre-spot",
+          "width_m": 30,
+          "height_m": 25,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "passTo": 11
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Low and early",
+      "say": "Eleven shoots early and low. A small goal has no keeper, so the finish is about accuracy and about being quick enough to take it before twenty-five recovers.",
+      "players": [
+        {
+          "team": "home",
+          "number": 11,
+          "at": [
+            0.68,
+            0.51
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.62,
+            0.46
+          ]
+        },
+        {
+          "team": "away",
+          "number": 6,
+          "at": [
+            0.61,
+            0.57
+          ]
+        },
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.555,
+            0.395
+          ]
+        }
+      ],
+      "areas": [
+        {
+          "at": "centre-spot",
+          "width_m": 30,
+          "height_m": 25,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "at": [
+          0.715,
+          0.5
+        ]
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Turn before they arrive\n- Pass behind the press\n- Shoot early, keep it low",
+      "say": "Coaching points. Turn before they arrive, play the pass behind the press rather than around it, and shoot early and keep it low.",
+      "areas": [
+        {
+          "at": "centre-spot",
+          "width_m": 30,
+          "height_m": 25,
+          "color": "yellow"
+        }
+      ]
+    }
+  ]
+}

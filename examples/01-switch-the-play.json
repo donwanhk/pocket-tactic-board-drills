@@ -1,0 +1,128 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Switch the play to the free winger",
+  "field": "11-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Switching the play",
+      "say": "Switching the play. We are teaching the players to recognise a crowded side and move the ball off it in two passes. Full pitch, four attackers against two defenders, one ball and no equipment. The right back serves to start every repetition.",
+      "players": [
+        {
+          "team": "home",
+          "number": 2,
+          "at": "right-defensive-third"
+        },
+        {
+          "team": "home",
+          "number": 6,
+          "at": "centre-defensive-third"
+        },
+        {
+          "team": "home",
+          "number": 11,
+          "at": "left-wing"
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": "centre-attacking-third"
+        },
+        {
+          "team": "away",
+          "number": 8,
+          "at": [
+            0.8,
+            0.62
+          ]
+        },
+        {
+          "team": "away",
+          "number": 4,
+          "at": "left-centre-middle-third"
+        }
+      ],
+      "ball": {
+        "carriedBy": 2
+      },
+      "circles": [
+        {
+          "at": [
+            0.16,
+            0.2
+          ],
+          "radius_m": 10,
+          "color": "yellow"
+        }
+      ]
+    },
+    {
+      "role": "instruction",
+      "caption": "Two passes to the far side",
+      "say": "Two has the ball on the right. Twenty-eight has already stepped out to him, twenty-four is the cover inside, and the ring is the ground eleven has to himself if the ball can get there."
+    },
+    {
+      "role": "execution",
+      "caption": "Inside, behind the press",
+      "say": "Here comes the press. Do not go long — play it inside to six, behind him, and watch twenty-four come across with him.",
+      "players": [
+        {
+          "team": "away",
+          "number": 8,
+          "at": [
+            0.85,
+            0.76
+          ]
+        },
+        {
+          "team": "away",
+          "number": 4,
+          "at": "centre-middle-third"
+        }
+      ],
+      "ball": {
+        "passTo": 6
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Switch it first time",
+      "say": "First time, six. Take a touch and the far side closes up. Strike it low across to eleven while twenty-four is still in the middle.",
+      "ball": {
+        "passTo": 11
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Eleven is away",
+      "say": "Eleven, attack that space before the cover gets back to you. That is why we moved it: two passes, and the far side is yours.",
+      "players": [
+        {
+          "team": "home",
+          "number": 11,
+          "at": [
+            0.1,
+            0.22
+          ]
+        },
+        {
+          "team": "away",
+          "number": 4,
+          "at": [
+            0.38,
+            0.36
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 11
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Look across before it arrives\n- Touch away from the press\n- Switch low and firm",
+      "say": "Coaching points. Look across before the ball arrives, take your touch away from the press, and switch it low and firm."
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Pass and follow, three stations",
+  "field": "futsal",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Pass and follow",
+      "say": "Pass and follow. The aim is a firm pass into the right foot and a passer who moves the moment the ball leaves him. Three stations seven metres apart inside the yellow ring, marked blue, green and red. Two at each, one waiting outside the ring, and one ball starting at the blue cone.",
+      "players": [
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.325,
+            0.62
+          ]
+        },
+        {
+          "team": "home",
+          "number": 3,
+          "at": [
+            0.325,
+            0.77
+          ]
+        },
+        {
+          "team": "home",
+          "number": 5,
+          "at": [
+            0.675,
+            0.62
+          ]
+        },
+        {
+          "team": "home",
+          "number": 6,
+          "at": [
+            0.675,
+            0.77
+          ]
+        },
+        {
+          "team": "home",
+          "number": 8,
+          "at": [
+            0.5,
+            0.45
+          ]
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.5,
+            0.3
+          ]
+        }
+      ],
+      "cones": [
+        {
+          "id": "blue-station",
+          "at": [
+            0.325,
+            0.62
+          ],
+          "color": "blue"
+        },
+        {
+          "id": "green-station",
+          "at": [
+            0.675,
+            0.62
+          ],
+          "color": "green"
+        },
+        {
+          "id": "red-station",
+          "at": [
+            0.5,
+            0.45
+          ],
+          "color": "red"
+        }
+      ],
+      "circles": [
+        {
+          "at": [
+            0.5,
+            0.563
+          ],
+          "radius_m": 5.5,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "carriedBy": 2
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Pass, then go with it",
+      "say": "Two plays it across to five and sets off after his own pass. Three comes in off the edge and takes the blue cone.",
+      "players": [
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.5,
+            0.62
+          ]
+        },
+        {
+          "team": "home",
+          "number": 3,
+          "at": [
+            0.325,
+            0.62
+          ]
+        }
+      ],
+      "circles": [
+        {
+          "at": [
+            0.5,
+            0.563
+          ],
+          "radius_m": 5.5,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "passTo": 5
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Same again, up to the red",
+      "say": "Five opens his body and plays it up to eight, then follows. Two carries on out of the ring to wait, and six steps on to the green cone.",
+      "players": [
+        {
+          "team": "home",
+          "number": 5,
+          "at": [
+            0.5875,
+            0.535
+          ]
+        },
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.675,
+            0.77
+          ]
+        },
+        {
+          "team": "home",
+          "number": 6,
+          "at": [
+            0.675,
+            0.62
+          ]
+        }
+      ],
+      "circles": [
+        {
+          "at": [
+            0.5,
+            0.563
+          ],
+          "radius_m": 5.5,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "passTo": 8
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Round it goes",
+      "say": "Eight closes the triangle back to three and follows it. Five goes out behind the red, nine comes in to the cone, and every station has shuffled up one.",
+      "players": [
+        {
+          "team": "home",
+          "number": 8,
+          "at": [
+            0.4125,
+            0.535
+          ]
+        },
+        {
+          "team": "home",
+          "number": 5,
+          "at": [
+            0.5,
+            0.3
+          ]
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.5,
+            0.45
+          ]
+        }
+      ],
+      "circles": [
+        {
+          "at": [
+            0.5,
+            0.563
+          ],
+          "radius_m": 5.5,
+          "color": "yellow"
+        }
+      ],
+      "ball": {
+        "passTo": 3
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Firm pass, never a roll\n- Open up before it arrives\n- Follow the pass every time",
+      "say": "Coaching points. Pass it firmly, never roll it. Open your body before it arrives, and follow your pass every single time.",
+      "circles": [
+        {
+          "at": [
+            0.5,
+            0.563
+          ],
+          "radius_m": 5.5,
+          "color": "yellow"
+        }
+      ]
+    }
+  ]
+}

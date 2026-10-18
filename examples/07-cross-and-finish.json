@@ -1,0 +1,160 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Cross and finish, by role",
+  "field": "11-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Everyone has one job",
+      "say": "Crossing and finishing, and everybody has one job. The server delivers from the right, the near-post runner attacks the front of the six-yard box and the far-post runner stays late behind him. Played in the attacking third with a keeper and one marker, and a ball to each server.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.88,
+            0.32
+          ],
+          "name": "Server"
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.42,
+            0.2
+          ],
+          "name": "Near"
+        },
+        {
+          "team": "home",
+          "number": 11,
+          "at": [
+            0.22,
+            0.26
+          ],
+          "name": "Far"
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.32,
+            0.18
+          ]
+        },
+        {
+          "team": "away",
+          "number": 1,
+          "at": [
+            0.52,
+            0.06
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Near post goes first",
+      "say": "The near-post runner goes first and drags the marker with him. The far man does the opposite — he waits, because the space he wants is the one the marker is leaving.",
+      "players": [
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.52,
+            0.14
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.38,
+            0.1
+          ]
+        },
+        {
+          "team": "home",
+          "number": 11,
+          "at": [
+            0.26,
+            0.24
+          ]
+        },
+        {
+          "team": "away",
+          "number": 1,
+          "at": [
+            0.5,
+            0.06
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "In front of the keeper",
+      "say": "The server puts it in front of the keeper and behind the defender. That strip of grass is where a cross is unsaveable and undefendable at the same time.",
+      "players": [
+        {
+          "team": "away",
+          "number": 1,
+          "at": [
+            0.46,
+            0.06
+          ]
+        }
+      ],
+      "ball": {
+        "passTo": 9
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Far post finishes",
+      "say": "Nine gets a touch on it and the far-post runner arrives behind him to finish. Nine never had to score: his job was to take the marker out of the way.",
+      "players": [
+        {
+          "team": "home",
+          "number": 11,
+          "at": [
+            0.3,
+            0.12
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.44,
+            0.2
+          ]
+        },
+        {
+          "team": "away",
+          "number": 1,
+          "at": [
+            0.44,
+            0.07
+          ]
+        }
+      ],
+      "ball": {
+        "passTo": 11
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Cross in front of the keeper\n- Near post goes first\n- Far post stays late",
+      "say": "Coaching points. Cross in front of the keeper, the near post run goes first, and the far post run stays late."
+    }
+  ]
+}

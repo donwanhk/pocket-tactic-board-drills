@@ -1,0 +1,194 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Win it back and go",
+  "field": "11-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "at": "top",
+      "caption": "They have it, we want it back",
+      "say": "Winning it back and going. The aim is the two seconds after the tackle: the ball must leave the crowd before they can press it again. Played in our own defensive third, three of theirs against three of ours, with nine waiting upfield, and they start with the ball.",
+      "players": [
+        {
+          "team": "away",
+          "number": 10,
+          "at": [
+            0.5,
+            0.72
+          ]
+        },
+        {
+          "team": "away",
+          "number": 7,
+          "at": [
+            0.68,
+            0.7
+          ]
+        },
+        {
+          "team": "away",
+          "number": 11,
+          "at": [
+            0.32,
+            0.7
+          ]
+        },
+        {
+          "team": "home",
+          "number": 6,
+          "at": [
+            0.5,
+            0.79
+          ]
+        },
+        {
+          "team": "home",
+          "number": 4,
+          "at": [
+            0.63,
+            0.81
+          ]
+        },
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.33,
+            0.8
+          ]
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.45,
+            0.52
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 10,
+        "team": "away"
+      }
+    },
+    {
+      "role": "execution",
+      "at": "top",
+      "caption": "Thirty comes inside",
+      "say": "Thirty takes a touch inside, which is the touch six has been waiting for. Four and two squeeze in behind him so there is nowhere to give it.",
+      "players": [
+        {
+          "team": "away",
+          "number": 10,
+          "at": [
+            0.52,
+            0.74
+          ]
+        },
+        {
+          "team": "home",
+          "number": 6,
+          "at": [
+            0.52,
+            0.8
+          ]
+        },
+        {
+          "team": "home",
+          "number": 4,
+          "at": [
+            0.6,
+            0.78
+          ]
+        },
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.38,
+            0.78
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 10,
+        "team": "away"
+      }
+    },
+    {
+      "role": "execution",
+      "at": "top",
+      "caption": "Six takes it off him",
+      "say": "Six goes through the ball and comes out the other side with it. Thirty has run past it, and for a moment nobody of theirs is goal side.",
+      "players": [
+        {
+          "team": "home",
+          "number": 6,
+          "at": [
+            0.51,
+            0.78
+          ]
+        },
+        {
+          "team": "away",
+          "number": 10,
+          "at": [
+            0.55,
+            0.72
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 6
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "First pass, straight up",
+      "say": "This is the two seconds. Six does not dribble out, he plays it straight up to nine, and twenty-seven and thirty-one have to turn and run.",
+      "players": [
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.45,
+            0.44
+          ]
+        },
+        {
+          "team": "away",
+          "number": 7,
+          "at": [
+            0.62,
+            0.64
+          ]
+        },
+        {
+          "team": "away",
+          "number": 11,
+          "at": [
+            0.36,
+            0.64
+          ]
+        },
+        {
+          "team": "away",
+          "number": 10,
+          "at": [
+            0.53,
+            0.67
+          ]
+        }
+      ],
+      "ball": {
+        "passTo": 9
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Tackle through the ball\n- Head up as you win it\n- First pass forward",
+      "say": "Coaching points. Tackle through the ball rather than at it, have your head up as you win it, and make the first pass a forward one."
+    }
+  ]
+}

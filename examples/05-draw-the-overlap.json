@@ -1,0 +1,194 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Draw the overlap, then run it",
+  "field": "11-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "The overlap, on the board first",
+      "say": "The overlap. Seven holds the ball up on the touchline and waits; two goes round the outside of him and takes the pass in behind. Here it is drawn: the yellow arrow is the pass, the black one is the run. Played down the right-hand channel between the halfway line and the box, one ball, no cones.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.78,
+            0.45
+          ]
+        },
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.86,
+            0.58
+          ]
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.5,
+            0.3
+          ]
+        },
+        {
+          "team": "away",
+          "number": 3,
+          "at": [
+            0.72,
+            0.38
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.55,
+            0.25
+          ]
+        }
+      ],
+      "arrows": [
+        {
+          "from": 7,
+          "to": [
+            0.88,
+            0.36
+          ],
+          "style": "solid",
+          "color": "yellow"
+        },
+        {
+          "from": 2,
+          "to": [
+            0.88,
+            0.36
+          ],
+          "style": "dotted",
+          "color": "black",
+          "curve": 0.3
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Two starts, seven waits",
+      "say": "The board is clear and it happens for real. Two sets off outside, seven holds the ball a beat longer, and twenty-three has to decide which of them to watch.",
+      "players": [
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.88,
+            0.47
+          ]
+        },
+        {
+          "team": "away",
+          "number": 3,
+          "at": [
+            0.72,
+            0.43
+          ]
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.52,
+            0.26
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.58,
+            0.22
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "In behind him",
+      "say": "Twenty-three steps towards the ball and that is the moment. Seven rolls it into the space outside, and two is already there.",
+      "players": [
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.88,
+            0.36
+          ]
+        },
+        {
+          "team": "away",
+          "number": 3,
+          "at": [
+            0.78,
+            0.36
+          ]
+        },
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.74,
+            0.4
+          ]
+        }
+      ],
+      "ball": {
+        "passTo": 2
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "First time across",
+      "say": "Two does not take a touch. He puts it across first time for nine, who has pulled off twenty-five and attacks the near post.",
+      "players": [
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.55,
+            0.2
+          ]
+        },
+        {
+          "team": "away",
+          "number": 5,
+          "at": [
+            0.62,
+            0.16
+          ]
+        },
+        {
+          "team": "home",
+          "number": 2,
+          "at": [
+            0.88,
+            0.3
+          ]
+        }
+      ],
+      "ball": {
+        "passTo": 9
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Hold it until he commits\n- Run outside, not inside\n- Cross first time",
+      "say": "Coaching points. Hold the ball until the defender commits to you, run outside him rather than inside, and put the cross in first time."
+    }
+  ]
+}

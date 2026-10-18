@@ -1,0 +1,204 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Spring the trap on the full back",
+  "field": "9-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Invite the pass we want",
+      "say": "Pressing to a trap. We are not trying to win it from the keeper - we are trying to make him play the yellow arrow, to the one man we have already surrounded. They build from the back in their own third, we press with three, and the ball starts with twenty-one.",
+      "players": [
+        {
+          "team": "away",
+          "number": 1,
+          "at": [
+            0.5,
+            0.09
+          ]
+        },
+        {
+          "team": "away",
+          "number": 2,
+          "at": [
+            0.78,
+            0.22
+          ]
+        },
+        {
+          "team": "away",
+          "number": 4,
+          "at": [
+            0.3,
+            0.2
+          ]
+        },
+        {
+          "team": "away",
+          "number": 6,
+          "at": [
+            0.52,
+            0.32
+          ]
+        },
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.5,
+            0.2
+          ]
+        },
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.66,
+            0.3
+          ]
+        },
+        {
+          "team": "home",
+          "number": 8,
+          "at": [
+            0.38,
+            0.33
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 1,
+        "team": "away"
+      },
+      "arrows": [
+        {
+          "from": 1,
+          "to": 2,
+          "style": "solid",
+          "color": "yellow"
+        },
+        {
+          "from": 7,
+          "to": [
+            0.74,
+            0.25
+          ],
+          "style": "dotted",
+          "color": "black",
+          "curve": -0.25
+        }
+      ]
+    },
+    {
+      "role": "instruction",
+      "caption": "Nine closes one side only",
+      "say": "Nine runs at twenty-one from an angle, so the inside pass is shut and the only easy ball is the one out to twenty-two. Eight shuts the middle. Seven does nothing yet - the black arrow is his run, and it starts when the ball does.",
+      "players": [
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.44,
+            0.18
+          ]
+        },
+        {
+          "team": "home",
+          "number": 8,
+          "at": [
+            0.42,
+            0.3
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 1,
+        "team": "away"
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "There it is",
+      "say": "The pass goes where we wanted it. The moment it leaves the keeper's foot, seven is already running — not at twenty-two, but across the line back inside him.",
+      "players": [
+        {
+          "team": "away",
+          "number": 6,
+          "at": [
+            0.58,
+            0.3
+          ]
+        },
+        {
+          "team": "away",
+          "number": 4,
+          "at": [
+            0.32,
+            0.24
+          ]
+        }
+      ],
+      "ball": {
+        "passTo": 2,
+        "team": "away"
+      }
+    },
+    {
+      "role": "execution",
+      "caption": "Seven takes it off the line",
+      "say": "Seven arrives as the ball does. Twenty-two has the touchline behind him and nowhere to go inside, and seven comes away with it twenty metres from their goal.",
+      "players": [
+        {
+          "team": "home",
+          "number": 7,
+          "at": [
+            0.74,
+            0.25
+          ]
+        },
+        {
+          "team": "away",
+          "number": 2,
+          "at": [
+            0.82,
+            0.28
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "explanation",
+      "caption": "Why the trap works",
+      "say": "It works because nine made the decision for them. A press that closes every option just gets played around; a press that leaves one option open decides where the ball goes, and seven can be there before it arrives.",
+      "players": [
+        {
+          "team": "home",
+          "number": 9,
+          "at": [
+            0.58,
+            0.2
+          ]
+        },
+        {
+          "team": "home",
+          "number": 8,
+          "at": [
+            0.48,
+            0.28
+          ]
+        }
+      ],
+      "ball": {
+        "carriedBy": 7
+      }
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Press from an angle\n- Leave one pass open\n- Go on the pass, not the man",
+      "say": "Coaching points. Press from an angle rather than head on, leave one pass open on purpose, and start your run when the ball is played, not when the man gets it."
+    }
+  ]
+}

@@ -30,7 +30,13 @@ Usage:
 
 import argparse
 import json
+import os
 import sys
+
+# This script's own folder, so drill_check is importable however the preview was invoked. Python
+# usually puts it there, but not under -I, which is how a cautious sandbox runs a script out of a
+# freshly unzipped folder - and that is exactly where this has to work.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import drill_check
 from drill_check import resolve_zone, row_points

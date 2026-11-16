@@ -1,0 +1,12 @@
+{
+  "format": "ptb.team/1",
+  "players": [
+    { "number": 1, "name": "A. Chan", "position": "GK" },
+    { "number": 4, "name": "B. Wong", "position": "CB" },
+    { "number": 7, "name": "C. Lau", "position": "RM" },
+    { "number": 8, "name": "D. Ho", "position": "LM" },
+    { "number": 10, "name": "E. Tsang", "position": "CF" },
+    { "number": 2, "name": "F. Ng", "position": "NA" },
+    { "number": 3, "name": "G. Yip", "position": "NA" }
+  ]
+}

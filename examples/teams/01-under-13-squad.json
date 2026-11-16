@@ -1,0 +1,18 @@
+{
+  "format": "ptb.team/1",
+  "players": [
+    { "number": 1, "name": "Marcus", "position": "GK" },
+    { "number": 12, "name": "Elias", "position": "GK" },
+    { "number": 2, "name": "Danny", "position": "RB" },
+    { "number": 3, "name": "Kieran", "position": "LB" },
+    { "number": 4, "name": "Andreas", "position": "CB" },
+    { "number": 5, "name": "Felix", "position": "CB" },
+    { "number": 6, "name": "Ryan", "position": "CDM" },
+    { "number": 8, "name": "Owen", "position": "CM" },
+    { "number": 10, "name": "Luca", "position": "CAM" },
+    { "number": 7, "name": "Harvey", "position": "RW" },
+    { "number": 11, "name": "Theo", "position": "LW" },
+    { "number": 9, "name": "Victor", "position": "ST" },
+    { "number": 14, "name": "Sam", "position": "NA" }
+  ]
+}

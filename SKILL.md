@@ -1,6 +1,6 @@
 ---
 name: pocket-tactic-board-drills
-description: Write a coaching drill for the Pocket Tactic Board phone app and turn it into a QR code the app scans. Use when someone asks for a soccer or futsal drill, a training exercise, a tactical animation, or a drill video for that app.
+description: Write a coaching drill for the Pocket Tactic Board phone app, or turn a squad list into a team code, and render either as a QR code the app scans. Use when someone asks for a soccer or futsal drill, a training exercise, a tactical animation, a drill video for that app, or wants to get their player list into it.
 ---
 
 # Writing drills for Pocket Tactic Board
@@ -14,6 +14,11 @@ handing them a code they have no way to read.
 
 **Read [FORMAT.md](FORMAT.md) before writing anything.** It is generated from the app's validator, so
 it is the authority on limits, place names and vocabulary. Do not rely on what is remembered here.
+
+There is a second, much smaller thing this skill makes: a **team code**, which carries a squad list
+rather than a drill. If that is what was asked for, read
+**[TEAM-FORMAT.md](TEAM-FORMAT.md)** and skip to [Team codes](#team-codes) at the end — none of the
+drill guidance below applies to it.
 
 ## Ask before you write
 
@@ -170,6 +175,16 @@ rejects a ball given to a player who is not on the pitch, so the common version 
 back as an error rather than a drill that quietly contradicts itself — but the version where both
 teams have that number does not, and only reading the listing will catch it.
 
+**One ball, many, or none — say which the drill really wants.** `ball` is the one the drill follows:
+it paces the animation, it is what a solid arrow means, and every drill that has a ball in play
+should name a carrier for it. A queue of players each with their own at their feet is not that ball;
+those are scenery, and they belong in `balls`, which drops them at fixed spots the way `cones` does.
+Use that when the narration says *every player brings a ball* — four balls promised in the voice and
+one on the screen is the kind of contradiction a coach notices immediately. And a shape session that
+is deliberately ball-free — a back four shifting on your call, not on play — says `"ball": "none"`,
+which is honest about what the players are being asked to watch. Reach for `"none"` only when the
+absence is the point; a drill that simply forgot to say who has it is a different mistake.
+
 **Do not put a player on a net.** Nets draw underneath players, so a keeper placed on
 `attacking-goal` makes the goal vanish. Offset one of them.
 
@@ -316,3 +331,47 @@ characters, and they stay on screen whole while the voice reads the same points 
 Open with a `setup` phase that places everyone and says what the exercise is. Then two to five
 `execution` phases carrying the movement. Close with a `coaching` phase that names the point to take
 away. Six phases is a comfortable video; nineteen is the ceiling and far more than anyone watches.
+
+
+## Team codes
+
+A squad list, as a scannable code. The coach has their players written down somewhere — a club
+email, a spreadsheet column, a message thread, a photographed team sheet — and typing twenty of them
+into a phone one at a time is the thing this removes.
+
+Read [TEAM-FORMAT.md](TEAM-FORMAT.md) for the shape and the limits. It is generated from the app's
+own validator, like FORMAT.md, so it is the authority rather than anything recalled here.
+
+### The loop
+
+1. Ask for the list, in whatever shape they have it. Do not ask them to tidy it first — reading an
+   untidy list is the job.
+2. Convert it. Shirt number, name, position, one object per player.
+3. **Say what you could not tell**, before making a code. A list that gives no positions, or no
+   numbers, is normal; guessing at them silently is not. `NA` is the honest position for a player
+   whose list does not say, and a number you invented is a number that will be wrong on a bib.
+4. Check it: `python3 scripts/team_check.py team.json`.
+5. Make the code: `python3 scripts/make_qr.py team.json -o team-code.png`, and show it.
+6. **List the squad in the reply**, numbers and names, the way drills get their phases listed. The
+   code is unreadable by eye, so this is the only chance anyone has to notice a name you misread.
+
+In the app: **My Team → the scan button beside Add Player**.
+
+### Names
+
+Suggest first names, or initials and a surname, and say why once: a name is drawn under a disc on
+the board and is wider than it, so full names crowd each other out — and a squad list pasted into a
+conversation is a page of real names, often children's, going to whichever assistant is being used.
+
+Then write it the way they ask. It is their squad, they know who needs telling apart from whom, and
+a coach who wants full names has a reason. Say it once, not twice.
+
+### What not to do
+
+- **Do not invent players** to round a squad up to eleven, or fifteen, or any other number. A squad
+  is whoever is in it.
+- **Do not carry anything else across.** The format holds a number, a name and a position. If the
+  source list has dates of birth, phone numbers or parents' names, leave them out — and say that you
+  have, so nobody assumes the app is now holding them.
+- **Do not resolve a clash yourself.** Two players on one shirt number is a mistake in the source
+  list, and only the coach knows which of the two is wrong. The checker reports it; let them answer.

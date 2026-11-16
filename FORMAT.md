@@ -43,7 +43,7 @@ declares them and are gone on the next one.
 
 A phase may carry `role` (`setup`, `instruction`, `execution`, `explanation`, `coaching`), `say` (the narration), `caption` and `at`
 (`top`, `middle`, `bottom`) for the caption's place on screen, plus `players`, `cones`,
-`nets`, `ball`, `arrows`, `areas` and `circles`.
+`nets`, `ball`, `balls`, `arrows`, `areas` and `circles`.
 
 **A phase's `say` is spoken while the board moves into that phase**, so the words and the movement
 they describe play together. The first phase is the exception: nothing moves into it, so its words
@@ -92,6 +92,18 @@ The same split catches the ball. `carriedBy` and `passTo` take the **written** n
 `team` defaults to home - so `{ "carriedBy": 4 }` means home 4, never away 4. Give the ball to an
 away player with `{ "carriedBy": 4, "team": "away" }`. A ball handed to a player who is not on the
 pitch is rejected rather than quietly left where it was.
+
+**More than one ball, or none at all.** `ball` is the match ball - the one a player carries, the
+one a pass moves, and the only one the sides-of-the-feet rule below applies to. Everything else goes
+in `balls`, which takes the same `at`, `id`, `count`, `spacing_m` and `direction` a row of
+cones takes, so "a ball each for the queue" is one instruction. Give an extra ball an `id` and it
+is the same ball in later phases, moving as it would; leave the `id` out and each phase that
+mentions it adds another, exactly as with cones.
+
+Write `"ball": "none"` for a drill with no ball in it at all - shape work, a shadow
+press, anything rehearsed without one. A word rather than an omission, because leaving `ball` out
+already means "unchanged": every phase is a delta. Like everything else it carries forward, and any
+later `ball` puts the ball back.
 
 **Which side of his feet the ball sits on is worked out for you.** A ball just received sits on the
 side it came from; one about to be played sits toward whoever gets it next; one being carried sits
@@ -170,13 +182,14 @@ In `examples/`, every one validated when this file was generated.
 | file | what it shows | phases | code length |
 |---|---|---|---|
 | `01-switch-the-play.json` | Switch the play to the free winger | 6 | 1188 |
-| `02-slalom-dribble.json` | Slalom dribble through the gate | 6 | 1155 |
+| `02-slalom-dribble.json` | Slalom dribble through the gate | 6 | 1172 |
 | `03-pass-and-follow.json` | Pass and follow, three stations | 5 | 1148 |
 | `04-two-small-goals.json` | Three against three, two small goals | 5 | 1272 |
 | `05-draw-the-overlap.json` | Draw the overlap, then run it | 5 | 1175 |
 | `06-win-it-back.json` | Win it back and go | 5 | 1104 |
 | `07-cross-and-finish.json` | Cross and finish, by role | 5 | 1059 |
 | `08-spring-the-trap.json` | Spring the trap on the full back | 6 | 1439 |
+| `09-shift-as-a-unit.json` | Shift as a unit, no ball | 5 | 1075 |
 
 A QR code holds about 2953 characters, so there is room for far more than these use.
 `make_qr.py` refuses anything that will not fit rather than truncating it.

@@ -1,0 +1,58 @@
+{
+  "format": "ptb.drill/1",
+  "title": "Shift as a unit, no ball",
+  "field": "11-a-side",
+  "phases": [
+    {
+      "role": "setup",
+      "caption": "Shape before anything else",
+      "say": "Shape work, and there is no ball in this one. Four defenders across the edge of our own third, ten metres between each of them. You move on my call, not on the ball, so the only thing to think about is the distance to the man beside you.",
+      "ball": "none",
+      "players": [
+        { "team": "home", "number": 3, "at": [0.18, 0.84] },
+        { "team": "home", "number": 5, "at": [0.38, 0.84] },
+        { "team": "home", "number": 4, "at": [0.58, 0.84] },
+        { "team": "home", "number": 2, "at": [0.78, 0.84] }
+      ]
+    },
+    {
+      "role": "execution",
+      "caption": "Over to the right",
+      "say": "Right. Everybody travels, nobody sprints — if three is still standing where he was, the gap between him and five is the one a striker runs into.",
+      "players": [
+        { "team": "home", "number": 3, "at": [0.28, 0.84] },
+        { "team": "home", "number": 5, "at": [0.48, 0.84] },
+        { "team": "home", "number": 4, "at": [0.68, 0.84] },
+        { "team": "home", "number": 2, "at": [0.88, 0.84] }
+      ]
+    },
+    {
+      "role": "execution",
+      "caption": "And back across",
+      "say": "And back the other way. Two is the furthest from the action now, so he is the one who has to cover the most ground to keep the four of them joined up.",
+      "players": [
+        { "team": "home", "number": 3, "at": [0.14, 0.84] },
+        { "team": "home", "number": 5, "at": [0.34, 0.84] },
+        { "team": "home", "number": 4, "at": [0.54, 0.84] },
+        { "team": "home", "number": 2, "at": [0.74, 0.84] }
+      ]
+    },
+    {
+      "role": "execution",
+      "caption": "Step up together",
+      "say": "Now step. All four at once, and hold the line flat — one of you late is one of you playing a striker onside while the other three have stepped away from him.",
+      "players": [
+        { "team": "home", "number": 3, "at": [0.14, 0.72] },
+        { "team": "home", "number": 5, "at": [0.34, 0.72] },
+        { "team": "home", "number": 4, "at": [0.54, 0.72] },
+        { "team": "home", "number": 2, "at": [0.74, 0.72] }
+      ]
+    },
+    {
+      "role": "coaching",
+      "at": "middle",
+      "caption": "Coaching points\n- Ten metres, every time\n- Travel, do not sprint\n- Step together or not at all",
+      "say": "Coaching points. Keep ten metres between you, travel rather than sprint so you arrive balanced, and step as one — a line is only as flat as the slowest man in it."
+    }
+  ]
+}

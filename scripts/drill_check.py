@@ -303,6 +303,7 @@ def check_phase(phase, path, rules, report):
     check_cones(phase, path, rules, report)
     check_nets(phase, path, rules, report)
     check_ball(phase, path, rules, report)
+    check_balls(phase, path, rules, report)
     check_shapes(phase, path, rules, report)
     check_arrows(phase, path, rules, report)
 
@@ -400,13 +401,34 @@ def check_nets(phase, path, rules, report):
                          % ", ".join(str(o) for o in rules["netOrientations"]))
 
 
+def check_balls(phase, path, rules, report):
+    """Extra balls beside the match ball. Keyed and stepped the way cones are."""
+    balls = phase.get("balls")
+    if balls is None:
+        return
+    if not isinstance(balls, list):
+        report.error(path + ".balls", "Must be an array.")
+        return
+    for i, ball in enumerate(balls):
+        p = "%s.balls[%d]" % (path, i)
+        if not isinstance(ball, dict):
+            report.error(p, "Must be an object.")
+            continue
+        check_zone(ball.get("at"), p + ".at", rules, report)
+        check_repeat(ball, p, rules, report)
+
+
 def check_ball(phase, path, rules, report):
     ball = phase.get("ball")
     if ball is None:
         return
     p = path + ".ball"
+    # The one value that is a word rather than an object: no match ball on the pitch
+    if ball == rules["ballNone"]:
+        return
     if not isinstance(ball, dict):
-        report.error(p, "Must be an object: { carriedBy: n }, { passTo: n } or { at: place }.")
+        report.error(p, 'Must be "%s", or an object: { carriedBy: n }, { passTo: n } or '
+                        "{ at: place }." % rules["ballNone"])
         return
     if "carriedBy" in ball or "passTo" in ball:
         key = "carriedBy" if "carriedBy" in ball else "passTo"
@@ -516,7 +538,7 @@ def check_ball_carriers(phases, rules, report):
             for n in range(max(1, count)):
                 on_pitch.add("%s-%d" % (player.get("team"), player.get("number") + n))
         ball = phase.get("ball")
-        if not ball or "at" in ball:
+        if not ball or ball == rules["ballNone"] or "at" in ball:
             continue
         team = ball.get("team") or "home"
         wanted = ball.get("carriedBy") if "carriedBy" in ball else ball.get("passTo")

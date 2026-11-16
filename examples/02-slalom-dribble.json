@@ -28,6 +28,18 @@
           "direction": "down"
         }
       ],
+      "balls": [
+        {
+          "id": "queue-balls",
+          "at": [
+            0.6,
+            0.67
+          ],
+          "count": 4,
+          "spacing_m": 8,
+          "direction": "down"
+        }
+      ],
       "cones": [
         {
           "id": "slalom",

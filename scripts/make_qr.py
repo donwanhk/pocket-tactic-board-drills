@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Turn a drill JSON file into a QR code the Pocket Tactic Board app can scan.
+"""Turn a drill or a team JSON file into a QR code the Pocket Tactic Board app can scan.
 
 Usage:
     python3 make_qr.py drill.json [-o drill.png] [--text-only]
+    python3 make_qr.py team.json  [-o team.png]
     cat drill.json | python3 make_qr.py - -o drill.png
+
+Which of the two it is comes from the payload's own `format` field, not from a flag. The file says
+what it is; asking the caller to say it again is a second place for the two to disagree.
 
 The drill is checked first, by `drill_check.py`, which refuses what the app would refuse. That used
 to be left to the phone on the grounds that a second copy of the rules would drift from the
@@ -14,10 +18,12 @@ reports as advice, or leaves to the phone, which remains the authority.
 `--no-check` skips it. The one limit nothing else can help with is still enforced here: how much a
 QR code physically holds.
 
-The payload format must match utils/drillLink.ts exactly:
-    PTB1: + base64url( raw DEFLATE( json ) )
+The payload format must match utils/drillLink.ts and utils/teamCode.ts exactly:
+    PTB1:  + base64url( raw DEFLATE( json ) )   for a drill
+    PTBT1: + base64url( raw DEFLATE( json ) )   for a team
 Raw DEFLATE means no zlib header, which is what fflate's deflateSync produces and what the app's
-inflateSync expects. Hence wbits=-15.
+inflateSync expects. Hence wbits=-15. The prefixes differ at the fourth character, so neither is a
+prefix of the other and the app can tell them apart before decoding anything.
 """
 
 import argparse
@@ -37,20 +43,22 @@ sys.path.insert(0, os.path.join(HERE, os.pardir, 'vendor'))
 sys.path.insert(0, HERE)
 
 import drill_check
+import team_check
 
-PREFIX = "PTB1:"
+DRILL_PREFIX = "PTB1:"
+TEAM_PREFIX = "PTBT1:"
 # Capacity of the largest QR version in byte mode at error correction L. Past this there is no
 # bigger code to move up to, so the only honest answer is to refuse.
 QR_BYTE_CEILING = 2953
 
 
-def encode(script: dict) -> str:
-    """JSON -> raw DEFLATE -> base64url -> prefixed code. Mirrors encodeDrillCode()."""
-    raw = json.dumps(script, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+def encode(payload: dict, prefix: str) -> str:
+    """JSON -> raw DEFLATE -> base64url -> prefixed code. Mirrors encodeDrillCode/encodeTeamCode."""
+    raw = json.dumps(payload, separators=(",", ":"), ensure_ascii=False).encode("utf-8")
     compressor = zlib.compressobj(9, zlib.DEFLATED, -15)
     packed = compressor.compress(raw) + compressor.flush()
     # The app's decoder tolerates missing padding, and '=' would only cost QR density.
-    return PREFIX + base64.urlsafe_b64encode(packed).decode("ascii").rstrip("=")
+    return prefix + base64.urlsafe_b64encode(packed).decode("ascii").rstrip("=")
 
 
 def too_big_message(script: dict, code: str) -> str:
@@ -78,8 +86,8 @@ def too_big_message(script: dict, code: str) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Make a scannable drill code")
-    parser.add_argument("drill", help="path to the drill JSON, or - for stdin")
+    parser = argparse.ArgumentParser(description="Make a scannable drill or team code")
+    parser.add_argument("drill", help="path to the drill or team JSON, or - for stdin")
     parser.add_argument("-o", "--out", default="drill-code.png", help="where to write the PNG")
     parser.add_argument(
         "--text-only",
@@ -89,7 +97,7 @@ def main() -> int:
     parser.add_argument(
         "--no-check",
         action="store_true",
-        help="encode without checking the drill first, leaving every mistake to the phone",
+        help="encode without checking it first, leaving every mistake to the phone",
     )
     args = parser.parse_args()
 
@@ -99,29 +107,49 @@ def main() -> int:
     except json.JSONDecodeError as error:
         print(f"That is not valid JSON: {error}", file=sys.stderr)
         return 1
-    if not isinstance(script, dict) or not isinstance(script.get("phases"), list):
+    if not isinstance(script, dict):
+        print("A drill or a team is a JSON object.", file=sys.stderr)
+        return 1
+
+    # The payload says which it is. A team is the narrower claim, so it is the one tested for -
+    # anything else is treated as a drill and told so by the drill checker, which gives a better
+    # message than a guess here could.
+    is_team = script.get("format") == team_check.load_rules()["format"]
+    checker = team_check if is_team else drill_check
+    noun = "team" if is_team else "drill"
+    prefix = TEAM_PREFIX if is_team else DRILL_PREFIX
+
+    if not is_team and not isinstance(script.get("phases"), list):
         print("A drill is a JSON object with a `phases` array.", file=sys.stderr)
         return 1
 
     if not args.no_check:
-        report = drill_check.check(script, drill_check.load_rules())
+        report = checker.check(script, checker.load_rules())
         if report.errors:
             # No code is written. Handing over one the app will refuse wastes a scan and the trust
             # that goes with it.
-            print(drill_check.format_report(report), file=sys.stderr)
-            print("\nNo code written. Fix the drill, or pass --no-check to encode it anyway.",
+            print(checker.format_report(report), file=sys.stderr)
+            print(f"\nNo code written. Fix the {noun}, or pass --no-check to encode it anyway.",
                   file=sys.stderr)
             return 1
         if report.warnings:
-            print(drill_check.format_report(report))
+            print(checker.format_report(report))
             print()
 
-    code = encode(script)
+    code = encode(script, prefix)
     if len(code) > QR_BYTE_CEILING:
-        print(too_big_message(script, code), file=sys.stderr)
+        if is_team:
+            print(f"This team encodes to {len(code)} characters and a QR code holds about "
+                  f"{QR_BYTE_CEILING}. Split the squad across two codes and scan both.",
+                  file=sys.stderr)
+        else:
+            print(too_big_message(script, code), file=sys.stderr)
         return 1
 
-    print(f"{len(code)} characters, {len(script['phases'])} phase(s).")
+    if is_team:
+        print(f"{len(code)} characters, {len(script['players'])} player(s).")
+    else:
+        print(f"{len(code)} characters, {len(script['phases'])} phase(s).")
 
     if args.text_only:
         print(code)

@@ -65,6 +65,7 @@
     "solid",
     "dotted"
   ],
+  "ballNone": "none",
   "drawingColors": [
     "black",
     "yellow"
@@ -287,6 +288,7 @@
       "cones",
       "nets",
       "ball",
+      "balls",
       "arrows",
       "areas",
       "circles"
@@ -319,6 +321,13 @@
       "passTo",
       "at",
       "team"
+    ],
+    "extraBall": [
+      "id",
+      "at",
+      "count",
+      "spacing_m",
+      "direction"
     ],
     "arrow": [
       "from",

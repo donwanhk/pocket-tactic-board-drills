@@ -1,8 +1,12 @@
-# Pocket Tactic Board — drill skill
+# Pocket Tactic Board — drill and team skill
 
 Ask an AI assistant for a soccer or futsal drill. It writes the drill and shows you a QR code.
 Scan that code with the **Pocket Tactic Board** app and the drill appears on your board, ready to
 animate and export as a narrated video.
+
+It does the same for your squad. Paste your player list in whatever shape you have it, and the
+assistant hands back a **team code** — scan that under **My Team** and the whole squad arrives at
+once, instead of being typed in one player at a time.
 
 **[⬇ Download the latest release](https://github.com/donwanhk/pocket-tactic-board-drills/releases/latest)**
 — `pocket-tactic-board-drills.zip`
@@ -79,6 +83,16 @@ the app: **☰ → Scan a Drill Code**, point the camera at it, then **Load dril
 
 Each revision is a new code. Say what is wrong, scan again — it takes a couple of seconds.
 
+For a squad:
+
+> *"Here is my team list, turn it into a team code."* — then paste it.
+
+Same idea, different code. In the app: **My Team → the scan button beside Add Player**.
+
+The code holds your players' names, and whatever you paste reaches whichever assistant you are
+using. First names or initials are usually enough for a tactics board, and the skill will suggest
+them — but it is your squad, so it writes the list the way you ask.
+
 ---
 
 ## What is in here
@@ -86,10 +100,14 @@ Each revision is a new code. Say what is wrong, scan again — it takes a couple
 ```
 SKILL.md        what the assistant reads first
 FORMAT.md       the drill format, generated from the app's own validator
+TEAM-FORMAT.md  the team format, generated the same way
 rules.json      the same limits and place names, for the scripts rather than the reader
-examples/       eight worked drills, all validated
-scripts/        make_qr.py       - drill JSON to a scannable code
+team-rules.json the team limits, likewise
+examples/       nine worked drills, all validated
+examples/teams/ two worked squads
+scripts/        make_qr.py       - drill or team JSON to a scannable code
                 drill_check.py   - refuses what the app would refuse, before a code is made
+                team_check.py    - the same, for a squad
                 drill_preview.py - draws each phase as a grid, to look at before anyone scans it
 vendor/segno/   the QR encoder, vendored so there is no install step
 ```
